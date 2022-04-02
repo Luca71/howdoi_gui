@@ -1,4 +1,3 @@
-from ctypes import alignment
 import sys
 from tkinter import TOP, Toplevel
 from tkinter.font import BOLD
@@ -12,9 +11,10 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Howdoi GUI")
-
         Font = QFont('Segoe UI Variable', 12, QFont.Bold)
+
+        self.setWindowTitle("Howdoi GUI")
+        self.setFont(Font)
 
         self.label = QLabel()
         self.label.setStyleSheet("border: 1px solid #1A72BB")
@@ -47,12 +47,15 @@ class MainWindow(QMainWindow):
 
     def GetAnswer(self):
         QueryText = self.input.text()
-        self.label.setText(howdoi.howdoi(QueryText))
+        if QueryText != "":
+            self.label.setText(howdoi.howdoi(QueryText))
 
-app = QApplication(sys.argv)
-app.setStyleSheet(qdarkstyle.load_stylesheet_pyside2()) # usign dark mode stylesheet
 
-window = MainWindow()
-window.show()
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    app.setStyleSheet(qdarkstyle.load_stylesheet_pyside2()) # usign dark mode stylesheet
 
-app.exec_()
+    window = MainWindow()
+    window.show()
+
+    app.exec_()
