@@ -1,3 +1,4 @@
+from msilib.schema import Font
 import sys
 from tkinter import TOP, Toplevel
 from tkinter.font import BOLD
@@ -17,10 +18,12 @@ class MainWindow(QMainWindow):
         self.setFont(Font)
 
         self.label = QLabel()
+        self.label.setFont(Font)
         self.label.setStyleSheet("border: 1px solid #1A72BB")
         self.label.setAlignment(Qt.AlignTop)
 
         self.input = QLineEdit()
+        self.input.setFont(Font)
 
         AskButton = QPushButton("Ask")
         AskButton.setFont(Font)
